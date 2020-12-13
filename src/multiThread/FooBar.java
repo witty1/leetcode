@@ -1,4 +1,4 @@
-package thread;
+package multiThread;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date: 2020/8/7
  * @Time: 21:32
  * @Description: https://leetcode-cn.com/problems/print-foobar-alternately/
+ * Reentrantlock+condition实现
  */
 public class FooBar {
     private int n;

@@ -26,11 +26,10 @@ public class FooBar {
 
         for (int i = 0; i < n; i++) {
             lock.lock();
-
-            while (flag != 0) {
-                condition.await();
-            }
             try {
+                while (flag != 0) {
+                    condition.await();
+                }
                 // printFoo.run() outputs "foo". Do not change or remove this line.
                 printFoo.run();
                 condition.signalAll();
@@ -46,10 +45,10 @@ public class FooBar {
         for (int i = 0; i < n; i++) {
 
             lock.lock();
-            while (flag != 1) {
-                condition.await();
-            }
             try {
+                while (flag != 1) {
+                    condition.await();
+                }
                 // printBar.run() outputs "bar". Do not change or remove this line.
                 printBar.run();
                 condition.signalAll();

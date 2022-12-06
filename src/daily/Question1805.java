@@ -30,14 +30,10 @@ public class Question1805 {
     }
 
     public void add(Set<String> set, StringBuilder temp){
-        while (temp.length() > 0 && temp.charAt(0) == '0'){
+        while (temp.length() > 1 && temp.charAt(0) == '0'){
             temp.deleteCharAt(0);
         }
-        if (temp.length() == 0){
-            set.add("0");
-        }else {
-            set.add(temp.toString());
-        }
+        set.add(temp.toString());
     }
 
     public int numDifferentIntegers1(String word) {

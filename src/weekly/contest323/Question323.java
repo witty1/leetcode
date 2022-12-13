@@ -76,38 +76,28 @@ public class Question323 {
                 freeSpace.add(i);
             }
         }
-
+        
         public int allocate(int size, int mID) {
             Iterator<Integer> iterator = freeSpace.iterator();
-            int pos = -1;
+            int pre = Integer.MIN_VALUE;
+            ArrayList<Integer> temp = new ArrayList<>();
             while (iterator.hasNext()) {
-                int temp = size;
                 Integer next = iterator.next();
-                if (pos != -1 && next < pos) {
-                    continue;
+                if (pre == Integer.MIN_VALUE || temp.get(temp.size() - 1) != next - 1){
+                    pre = next;
                 }
-                int i = next;
-                //todo 优先队列
-                while (i < space.length && space[i] == 0 && temp > 0) {
-                    i++;
-                    --temp;
-                }
-                if (i >= space.length && temp != 0) {
-                    return -1;
-                }
-                if (temp == 0) {
+                temp.add(next);
+                if (next - pre + 1 ==size){
                     List<Integer> list = usedSpace.getOrDefault(mID, new ArrayList<>());
-                    int len = i - size;
-                    for (; i > len; i--) {
-                        space[i - 1] = mID;
-                        list.add(i - 1);
-                        freeSpace.remove(i - 1);
+                    int len = next - size;
+                    for (; next > len; next--) {
+                        space[next] = mID;
+                        list.add(next);
+                        freeSpace.remove(next);
                     }
                     usedSpace.put(mID, list);
-                    return i;
+                    return next + 1;
                 }
-                pos = i;
-
             }
             return -1;
         }

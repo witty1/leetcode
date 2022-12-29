@@ -28,8 +28,8 @@ public class Question325 {
 
     public int closetTarget1(String[] words, String target, int startIndex) {
         int len = words.length;
-        for (int i = startIndex, j = startIndex, step = 0; step < len; i = ++i%len, j = (--j + len)%len, ++step) {
-            if (words[i].equals(target) || words[j].equals(target)){
+        for (int i = startIndex, j = startIndex, step = 0; step < len; i = ++i % len, j = (--j + len) % len, ++step) {
+            if (words[i].equals(target) || words[j].equals(target)) {
                 return step;
             }
         }
@@ -37,14 +37,13 @@ public class Question325 {
     }
 
 
-
-        public int takeCharacters(String s, int k) {
+    public int takeCharacters(String s, int k) {
         char[] chars = s.toCharArray();
         int[] cnt = new int[3];
         int length = chars.length;
         int j = length;
-        while (cnt[0] < k || cnt[1] < k || cnt[2] < k){
-            if (j == 0){
+        while (cnt[0] < k || cnt[1] < k || cnt[2] < k) {
+            if (j == 0) {
                 return -1;
             }
             cnt[chars[--j] - 'a']++;
@@ -52,23 +51,23 @@ public class Question325 {
         int ans = length - j;
         for (int i = 0; i < length; i++) {
             cnt[chars[i] - 'a']++;
-            while (j < length && cnt[chars[j] - 'a']> k){
+            while (j < length && cnt[chars[j] - 'a'] > k) {
                 cnt[chars[j] - 'a']--;
                 j++;
             }
-            ans = Math.min(ans, i + 1 +  length -j);
-            if (j == length){
+            ans = Math.min(ans, i + 1 + length - j);
+            if (j == length) {
                 break;
             }
         }
         return ans;
     }
 
-    public boolean check(int m,int[] price, int k){
+    public boolean check(int m, int[] price, int k) {
         int cnt = 0;
         int pre = Integer.MIN_VALUE;
         for (int i = 0; i < price.length && cnt < k; i++) {
-            if (price[i]  >= pre + m){
+            if (price[i] >= pre + m) {
                 cnt++;
                 pre = price[i];
             }
@@ -81,19 +80,17 @@ public class Question325 {
         int max = 0;
         Arrays.sort(price);
         int l = 0, r = price[price.length - 1];
-        while (l <= r){
+        while (l <= r) {
             int mid = (l + r + 1) >> 1;
-            if (check(mid, price, k)){
+            if (check(mid, price, k)) {
                 max = mid;
                 l = mid + 1;
-            }else {
+            } else {
                 r = mid - 1;
             }
         }
         return max;
     }
-
-
 
 
     //13,5,1,8,21,2  2, 13, 21 11,19,8

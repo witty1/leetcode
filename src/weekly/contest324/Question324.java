@@ -37,6 +37,12 @@ public class Question324 {
         return ans;
     }
 
+
+
+    public int smallestValue(int n) {
+        return 0;
+    }
+
     public static void main(String[] args) {
         Question324 question324 = new Question324();
         question324.similarPairs(new String[]{"aba", "aabb", "abcd", "bac", "aabc"});

@@ -1,5 +1,6 @@
 package daily;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,6 +32,11 @@ public class Question2363 {
         return res;
     }
 
+
+    public static void main(String[] args) {
+        BigDecimal zero = BigDecimal.ZERO;
+        System.out.println(String.format("%.2f", zero));
+    }
 
 
 }

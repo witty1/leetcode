@@ -9,6 +9,33 @@ package daily;
  */
 public class Question2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int left = 0;
+        ListNode ans = new ListNode();
+        ListNode next = ans;
+        while (l1 != null || l2 != null) {
+            int temp = 0;
+            if (l1 != null) {
+                temp += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                temp += l2.val;
+                l2 = l2.next;
+            }
+            temp += left;
+            left = temp / 10;
+            temp = temp % 10;
+            next.next = new ListNode(temp);
+            next = next.next;
+        }
+        if (left != 0) {
+            next.next = new ListNode(left);
+        }
+        return ans.next;
+    }
+
+
+    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
         int x = 0;
         ListNode next = new ListNode(0);
         ListNode t2 = new ListNode(0);
